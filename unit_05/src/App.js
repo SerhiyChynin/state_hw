@@ -56,10 +56,11 @@ function App() {
     setSt7(color);
 
   }
-  function task8() {              //!!!!
-    let n = i_8.current.value;
-    if(isNaN(+n)) return setSt8(1)
-    setSt8(0)
+  function task8(event) {              
+    let n = event.key;
+    console.log(event)
+    if (isNaN(+n)) return setSt8('0')
+    setSt8('1')
   }
   function task9() {
     setSt9(i_9.current.value)
@@ -117,7 +118,7 @@ function App() {
       </section>
       <section>
         <h2>Task 8</h2>
-        <input type="text" className="task-8" onKeyPress={task8} ref={i_8}></input>
+        <input type="text" className="task-8" onKeyPress={task8} ></input>
         <div>{st8}</div>
       </section>
       <section>
@@ -129,7 +130,10 @@ function App() {
         <h2>Task 10</h2>
         <input type="number" className="i-10" ref={i_10}></input>
         <button className="task-10" onClick={task10}>Push</button>
-        <div>{st10}</div>
+        <div>
+          <ul>{st10.map((item, index) => <li key={index.toString()}>{item}</li>)}
+            </ul>
+        </div>
       </section>
     </>
   );
